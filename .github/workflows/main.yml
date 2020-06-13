@@ -23,5 +23,5 @@ jobs:
       - name: Run surge
       
       - name: Deploy surge
-        run: surge ./build http://devops-covid20.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./build devops-covid20.surge.sh --token ${{ secrets.SURGE_TOKEN }}
    
