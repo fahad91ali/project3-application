@@ -40,7 +40,7 @@ jobs:
       run: npm install -g surge
        
     - name: Deploy to surge
-      run: surge ./build devops-project.surge.sh --token ${{secrets.SURGE_TOKEN}}
+      run: surge ./ build devops-project.surge.sh --token ${{secrets.SURGE_TOKEN}}
       
       
       
@@ -55,11 +55,22 @@ jobs:
       
       
       
-      
-      
+name: Deploy Website
 
-  # Runs a single command using the runners shell
-   
+on: [push]
 
-    # Runs a set of commands using the runners shell
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12
+      - name: Install Surge
+        run: npm install -g surge
+      - name: Run surge
+        run: surge ./ bootcamp_setup_ziakhan.surge.sh --token ${{ secrets.SURGE_TOKEN }}
    
